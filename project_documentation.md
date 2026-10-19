@@ -40,7 +40,7 @@ Data was retrieved from the website's listings API.
   patterns as observations rather than confirmed errors.
 
 ## 6. Output
-Saved a cleaned CSV containing 158 equipment listings and
+Saved a cleaned CSV (`data/nigerian_equipment_marketplace_cleaned.csv`) containing 158 equipment listings and
 21 analysis-ready columns.
 
 ## 7. Limitations
