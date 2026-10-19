@@ -50,7 +50,7 @@ python -m pip install -r requirements.txt
 jupyter notebook
 ```
 
-Keep `data/equipment_listings_raw.json` in the `data/` directory as the notebook, then run `Task 2_EDA.ipynb` from top to bottom. The notebook exports `data/nigerian_equipment_marketplace_cleaned.csv`, which is also included in this repository.
+Keep `data/equipment_listings_raw.json` in the `data/` directory. From the repository root, run `Task 2_EDA.ipynb` from top to bottom. The notebook exports `data/nigerian_equipment_marketplace_cleaned.csv`, which is also included in this repository.
 
 ## Project sequence
 
