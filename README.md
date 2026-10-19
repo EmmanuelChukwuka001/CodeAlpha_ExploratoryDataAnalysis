@@ -1,52 +1,61 @@
-# CodeAlpha Exploratory Data Analysis — Nigerian Equipment Marketplace
+# CodeAlpha Task 2: Exploratory Data Analysis
+## Nigerian Equipment Marketplace
 
-This repository contains **Task 2** of my CodeAlpha Data Analytics internship. It explores equipment listings collected from a Nigerian equipment marketplace to understand category representation, geographic concentration, listing condition, and advertised pricing.
+This repository contains **Task 2 — Exploratory Data Analysis (EDA)** for the CodeAlpha Data Analytics Internship. It prepares and explores the collected marketplace listings to understand category representation, location, seller-reported condition, and advertised sale and rental prices.
 
 ## Business question
 
-**What does the marketplace's listed equipment inventory reveal about category representation, geographic concentration, and advertised prices?**
+**What do the equipment listings on this marketplace reveal about category representation, geographic concentration, and advertised price availability?**
 
-## Tools and libraries
+## Repository contents
 
-- Python
-- pandas and NumPy
-- Matplotlib
-- Jupyter Notebook
+| File | Purpose |
+|---|---|
+| [`Task 2_EDA.ipynb`](Task%202_EDA.ipynb) | Data quality checks, cleaning, exploratory analysis, tables and charts |
+| [`equipment_listings_raw.json`](equipment_listings_raw.json) | Raw input snapshot from Task 1 |
+| [`nigerian_equipment_marketplace_cleaned.csv`](nigerian_equipment_marketplace_cleaned.csv) | Analysis-ready dataset of 158 equipment listings and 21 columns |
+| [`project_documentation.md`](project_documentation.md) | Methods, privacy considerations, findings and limitations |
+| [`01_missing_values.png`](01_missing_values.png) | Missing-value summary chart |
+| [`02_sale_price_outliers.png`](02_sale_price_outliers.png) | Sale-price outlier chart |
+| [`03_monthly_vs_daily_rate.png`](03_monthly_vs_daily_rate.png) | Comparison of monthly and daily rental rates |
+| [`requirements.txt`](requirements.txt) | Python dependencies |
 
-## Analysis workflow
+## Workflow
 
-- Load the collected listing records and inspect the dataset's structure and data types.
-- Focus the analysis on equipment listings and select relevant fields.
-- Check missing values, duplicate identifiers/titles, and pricing completeness.
-- Standardize category and location labels where needed while retaining original location values for review.
-- Group locations into broad regions for comparison.
-- Summarize categories, conditions, prices, and listing geography.
-- Use the interquartile range (IQR) method to flag potential sale-price outliers for investigation rather than automatically deleting them.
-- Generate charts to support the analysis.
+- Load the raw JSON and inspect listing types, fields and data types.
+- Exclude service listings and focus on 158 equipment listings.
+- Review missing values, repeated identifiers/titles and price coverage.
+- Standardize selected category and location labels while retaining source values where useful.
+- Summarize category, condition, location and advertised prices.
+- Use the interquartile range (IQR) method to flag unusually high sale prices for review, rather than automatically deleting them.
+- Export the cleaned dataset for Task 3.
 
-## Key findings in the notebook
+## Key findings
 
-- The analysis covers **158 equipment listings**.
-- **Lagos** accounts for 84 listings (53.2%) and **Abuja / FCT** for 65 (41.1%); together they account for 94.3% of the collected listings.
-- Transport & Logistic, Construction & Infrastructure, and Agriculture & Mining together account for 79 listings (50.0%).
-- Advertised pricing is incomplete: 119 listings (75.3%) have a sale price, while daily rental rates appear on 15 listings (9.5%).
-- Among listings with a sale price, the median advertised price is approximately **₦6.0 million**. A small number of high-value listings make the mean substantially higher.
+- **Category mix:** Transport & Logistic (32), Construction & Infrastructure (26), and Agriculture & Mining (21) account for 79 of 158 listings (50.0%).
+- **Location:** Lagos has 84 listings (53.2%) and Abuja / FCT has 65 (41.1%); together they account for 94.3% of this sample.
+- **Condition:** 78 listings are marked Used - Excellent (49.4%), 73 Brand New (46.2%), and 7 Used - Good (4.4%).
+- **Sale prices:** 119 listings (75.3%) have an advertised sale price. The median among priced listings is approximately **₦6.0 million**; high-value listings pull the mean upward.
+- **Price outliers:** Six sale prices are flagged by the IQR rule as potential outliers. They are retained because an unusually high price is not automatically an error.
+- **Rental prices:** Only 15 listings show a daily rate, and 14 show monthly and annual rates. Rental-price comparisons are therefore limited.
 
-These findings describe the collected listings on this platform, not the entire Nigerian equipment market. Missing prices mean a price was not advertised; they do not mean equipment is free. Seller-reported condition is not independently verified.
-
-## Expected input
-
-The notebook loads `equipment_listings_raw.json`, generated by Task 1. Keep that file in the working directory before running the notebook. If you share the dataset, remove personal or contact information first.
+These are patterns in the collected listings, not proof of total market supply, demand or completed transactions. Prices are asking prices; condition is seller-reported. Missing price fields mean that no price was advertised, not that the item is free.
 
 ## Run locally
 
+Python 3.10 or newer is recommended.
+
 ```bash
-pip install pandas numpy matplotlib jupyter
+python -m pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open the EDA notebook and run its cells in order.
+Keep `equipment_listings_raw.json` in the same working directory as the notebook, then run `Task 2_EDA.ipynb` from top to bottom. The notebook exports `nigerian_equipment_marketplace_cleaned.csv`, which is also included in this repository.
 
-## Internship
+## Project sequence
 
-Completed as part of the **CodeAlpha Data Analytics Internship** — Task 2: Exploratory Data Analysis.
+- **Task 1 — Web Scraping:** [CodeAlpha_WebScraping](https://github.com/EmmanuelChukwuka001/CodeAlpha_WebScraping)
+- **Task 2 — Exploratory Data Analysis:** this repository
+- **Task 3 — Data Visualization:** [CodeAlpha_DataVisualization](https://github.com/EmmanuelChukwuka001/CodeAlpha_DataVisualization)
+
+*CodeAlpha Data Analytics Internship · Task 2: Exploratory Data Analysis*
